@@ -18,7 +18,7 @@ ROOT_DIR = environ.Path(__file__) - 3
 APPS_DIR = ROOT_DIR.path('datascience-with-python')
 
 # Debug
-DEBUG = env.bool('DJANGO_KEY', False)
+DEBUG = env.bool('DJANGO_DEBUG', False)
 
 #ALLOWED_HOSTS = []
 
@@ -142,7 +142,7 @@ USE_TZ = True
 STATIC_URL = '/static/'
 
 STATICFILES_DIRS = [
-    str(APPS_DIR.path('static')
+    str(APPS_DIR.path('static'))
 ]
 
 # media
