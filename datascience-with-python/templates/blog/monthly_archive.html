@@ -1,0 +1,26 @@
+{% extends 'base.html' %}
+
+{% block content %}
+    
+    <ul>
+        {% for post in object_list %}
+            <li> {{ post.title }} </li>
+
+        {% endfor %}
+    </ul>
+
+    <p>
+        {% if previous_month %}
+            <a href="{% url 'blog:archive_month' previous_month|date:"Y" previous_month|date:"b" %}">
+                Previous Month: {{ previous_month|date:"F Y" }}
+            </a>
+        {% endif %}
+
+        {% if next_month %}
+            <br /><a href="{% url 'blog:archive_month' next_month|date:"Y" next_month|date:"b" %}">
+                Next Month: {{ next_month|date:"F Y" }}
+            </a>
+        {% endif %}
+    </p>
+
+{% endblock %}

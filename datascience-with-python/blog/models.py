@@ -4,6 +4,9 @@ from django.contrib.auth.models import User
 
 from django.template.defaultfilters import slugify
 
+# third party
+from taggit.managers import TaggableManager
+
 # Create your models here.
 
 class Post(models.Model):
@@ -17,6 +20,8 @@ class Post(models.Model):
     published = models.DateTimeField(default=timezone.now)
     created = models.DateTimeField(auto_now_add=True)
     updated = models.DateTimeField(auto_now=True)
+
+    tags = TaggableManager()
 
     class Meta:
         ordering = ('-published',)

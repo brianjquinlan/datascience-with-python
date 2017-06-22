@@ -11,7 +11,7 @@
         <meta name="author" content="Brian Quinlan">
         
         {% block css %}
-        	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.2/css/bootstrap.min.css" integrity="sha384-y3tfxAZXuh4HwSYylfB+J125MxIs6mR5FOHamPBG064zB+AFeWH94NdvaCBm8qnd" crossorigin="anonymous">
+        	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.6/css/bootstrap.min.css" integrity="sha384-rwoIResjU2yc3z8GV/NPeZWAv56rSmLldC3R/AZzGRnGxQQKnKkoFVhFQhNUwEyJ" crossorigin="anonymous">
 
 			<!-- third party css -->
 
@@ -26,7 +26,27 @@
     <body>
 
 		{% block nav %}
-			
+            <nav class="navbar navbar-toggleable-sm">
+    			<button class="navbar-toggler navbar-toggler-right"
+					type="button" data-toggle="collapse" data-target="#navbar">
+        				<span class="navbar-toggler-icon"> &#9776; </span>
+    			</button>
+    			
+				<a class="navbar-brand" href="{% url 'home' %}">DataScience with Python</a>
+    			<div class="navbar-collapse collapse justify-content-end" id="navbar">
+        			<ul class="navbar-nav float-sm-right">
+						<li class="nav-item">
+						    <a class="nav-link" href="{% url 'home' %}"> Home</a>
+						</li>
+						<li class="nav-item">
+						    <a class="nav-link" href="#"> About </a>
+						</li>
+						<li class="nav-item">
+						    <a class="nav-link" href="{% url 'blog:post_list' %}"> Blog </a>
+						</li>
+        			</ul>
+  			  </div>
+			</nav>
 		{% endblock %}
 
 		{% if messages %}

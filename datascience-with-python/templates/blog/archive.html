@@ -1,0 +1,16 @@
+{% extends 'base.html' %}
+
+{% block content %}
+    <h3> All Posts </h3>    
+
+    <ul>
+        {% for post in post_list %}
+            <li> {{ post.title }} </li>
+        {% endfor %}
+    </ul>
+    
+    <h3> By month </h3>
+        <a href="{% url 'blog:archive_month' post_list.first.published|date:"Y" post_list.first.published|date:"b" %}">
+            {{ post_list.first.published|date:"Y b" }} 
+        </a>
+{% endblock %}

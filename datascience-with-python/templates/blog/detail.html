@@ -5,6 +5,6 @@
     
     <p> {{ object.body|linebreaks }} </p>
 
-    <p> Pusblished by {{ object.author }} on {{ object.published }}. </p>
+    <p> Pusblished by {{ object.author }} on {{ object.published.date }}. </p>
 
 {% endblock %}
