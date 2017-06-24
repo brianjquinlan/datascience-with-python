@@ -9,7 +9,13 @@ urlpatterns = [
         view = views.PostListView.as_view(),
         name = 'post_list'
     ),
-    
+
+    url(
+        regex = r'^tag/(?P<tag_slug>[-\w]+)/$',
+        view = views.PostListView.as_view(),
+        name = 'list_by_tag'
+    ),
+
     url(
         regex = r'^feed/$',
         view = LatestPostsFeed(),

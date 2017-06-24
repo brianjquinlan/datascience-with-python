@@ -1,9 +1,10 @@
 {% extends 'base.html' %}
+{% load blog_tags %}
 
 {% block content %}
     <h1> {{ object.title }} </h2>
     
-    <p> {{ object.body|linebreaks }} </p>
+    <p> {{ object.body|markdown }} </p>
 
     <p> Published by {{ object.author }} on {{ object.published }}. </p>
     
@@ -12,7 +13,11 @@
     <p>
         Tags: 
         {% for tag in object.tags.all %}
-            {{ tag.name }}
+            <a href="{% url 'blog:list_by_tag' tag.slug %}">
+                {{ tag.name }}
+            </a>
+            {% if not forloop.last %}, {% endif %}
+
         {% endfor %}
     </p>
 {% endblock %}
