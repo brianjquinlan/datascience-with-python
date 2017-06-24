@@ -1,6 +1,7 @@
 from django.conf.urls import url
 
 from . import views
+from .feeds import LatestPostsFeed
 
 urlpatterns = [
     url(
@@ -9,7 +10,13 @@ urlpatterns = [
         name = 'post_list'
     ),
     
-	url(
+    url(
+        regex = r'^feed/$',
+        view = LatestPostsFeed(),
+        name = 'feed'
+    ),
+
+    url(
         regex = r'^archive/$',
         view = views.ArchiveIndexView.as_view(),
         name = 'archive_list'

@@ -2,6 +2,8 @@ from django.db import models
 from django.utils import timezone
 from django.contrib.auth.models import User
 
+from django.core.urlresolvers import reverse
+
 from django.template.defaultfilters import slugify
 
 # third party
@@ -17,8 +19,8 @@ class Post(models.Model):
     author = models.ForeignKey(User, related_name='blog_posts')
     body = models.TextField()
 
-    published = models.DateTimeField(default=timezone.now)
-    created = models.DateTimeField(auto_now_add=True)
+    # published = models.DateTimeField(default=timezone.now)
+    published = models.DateTimeField(auto_now_add=True)
     updated = models.DateTimeField(auto_now=True)
 
     tags = TaggableManager()
@@ -27,7 +29,7 @@ class Post(models.Model):
         ordering = ('-published',)
 
     def get_absolute_url(self):
-        pass
+        return reverse('blog:post_detail', args= [self.slug])
 
     def save(self, *args, **kwargs):
         self.slug = slugify(self.title)

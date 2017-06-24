@@ -5,6 +5,14 @@
     
     <p> {{ object.body|linebreaks }} </p>
 
-    <p> Pusblished by {{ object.author }} on {{ object.published.date }}. </p>
-
+    <p> Published by {{ object.author }} on {{ object.published }}. </p>
+    
+    <p> Updated on {{ object.updated }}. </p> 
+    
+    <p>
+        Tags: 
+        {% for tag in object.tags.all %}
+            {{ tag.name }}
+        {% endfor %}
+    </p>
 {% endblock %}
