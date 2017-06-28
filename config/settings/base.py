@@ -22,6 +22,8 @@ DEBUG = env.bool('DJANGO_DEBUG', False)
 
 #ALLOWED_HOSTS = []
 
+# SITEID 
+SITE_ID = 1
 
 # Application config
 DJANGO_APPS = [
@@ -31,6 +33,7 @@ DJANGO_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    'django.contrib.sites',
 ]
 
 THIRD_PARTY_APPS = [
@@ -56,17 +59,7 @@ MIDDLEWARE_CLASSES = [
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
 ]
 
-
 # Database
-# https://docs.djangoproject.com/en/1.9/ref/settings/#databases
-# if you want to use sqlite 
-# DATABASES = {
-#    'default': {
-#        'ENGINE': 'django.db.backends.sqlite3',
-#        'NAME': os.path.join(str(ROOT_DIR), 'db.sqlite3'),
-#    }
-# }
-
 DATABASES = {
         'default': env.db('DATABASE_URL'), # example 'postgres:///db_name'
 }
@@ -116,6 +109,10 @@ AUTH_PASSWORD_VALIDATORS = [
 
 # what's used to send emails
 EMAIL_BACKEND = env('DJANGO_EMAIL_BACKEND')
+
+# mailchimp keys
+MAILCHIMP_API_KEY = env('MAILCHIMP_API_KEY')
+MAILCHIMP_SUBSCRIBE_LIST_ID = env('MAILCHIMP_SUBSCRIBE_LIST_ID')
 
 # admins of site
 ADMINS = (

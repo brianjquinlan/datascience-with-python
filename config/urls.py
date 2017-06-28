@@ -28,6 +28,14 @@ urlpatterns = [
     url(r'^blog/', include('datascience-with-python.blog.urls', namespace='blog')),
 ]
 
-# allows for serving files during development stage.  should not be used
-# in production
-urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
+# setup django toolbar and static/media for development
+if settings.DEBUG:
+    import debug_toolbar
+
+    urlpatterns = [
+            url(r'^__debug__/', include(debug_toolbar.urls)),
+    ] + urlpatterns
+
+    # allows for serving files during development stage.  should not be used
+    # in production
+    urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
