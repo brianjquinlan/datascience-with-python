@@ -18,6 +18,7 @@ class Post(models.Model):
     
     author = models.ForeignKey(User, related_name='blog_posts')
     body = models.TextField()
+    image = models.ImageField(upload_to='images/blog_posts/', blank=True, null=True)
 
     # published = models.DateTimeField(default=timezone.now)
     published = models.DateTimeField(auto_now_add=True)

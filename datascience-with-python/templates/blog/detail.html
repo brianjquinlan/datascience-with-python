@@ -5,6 +5,8 @@
 {% block content %}
     <h1> {{ object.title }} </h2>
     
+    <img src="{{ object.image.url }}" width="300px" height="150px">
+    
     {{ object.body|markdown }}
 
     <p> Published by {{ object.author }} on {{ object.published }}. </p>

@@ -4,4 +4,17 @@ psycopg2==2.7.1
 django-redis==4.8.0
 redis==2.10.5
 django-environ==0.4.3
-Markdown
+Markdown==2.6.8
+MarkupSafe==1.0
+Shpinx==1.5.5
+Pygments==2.2.0
+
+# subscription mailing
+mailchimp==2.0.9
+
+# images
+Pillow==9.0.1
+sorl-thumbnail==12.3 # cannot be used for this version of django yet
+
+# third-party tag functionality
+django-taggit==0.22.1
