@@ -1,7 +1,7 @@
 import mailchimp
-import settings
+from django.conf import settings
 
-def mailchimplist():
+def subscribe_email(email):
     
     api = mailchimp.Mailchimp(settings.MAILCHIMP_API_KEY)
-    api.lists.subscribe(settings.MAILCHIMP_SUBSCRIBE_LIST_ID, {'email', 'test@email.com'})
+    api.lists.subscribe(settings.MAILCHIMP_SUBSCRIBE_LIST_ID, {'email': email})

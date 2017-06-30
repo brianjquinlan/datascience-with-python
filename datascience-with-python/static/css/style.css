@@ -27,6 +27,12 @@ body {
 
 }
 
+#content {
+    float: left;
+    width: 65%;
+    padding: 0 0 0 30px;
+}
+
 .primary-footer {
     position: absolute;
     bottom: 0;
@@ -42,3 +48,13 @@ body {
 }
 
 /* navbar */
+
+
+/* sidebar */
+#sidebar {
+    float: right;
+    width: 35%;
+    padding: 10px;
+    background: #efefef;
+    height: 100%;
+}

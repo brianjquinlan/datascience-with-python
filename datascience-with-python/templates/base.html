@@ -56,10 +56,38 @@
 				</div>
 			{% endfor %}
 		{% endif %}
+        
+        <div id="content">
+		    {% block content %}
+			    <p> content </p>
+		    {% endblock content	%}			
+        </div>
 
-		{% block content %}
-			<p> content </p>
-		{% endblock content	%}			
+        {% block sidebar %}
+            <div id="sidebar">
+                <h2> Machine Learning with Python </h3>
+                    <p> Posts about small machine learning projects </p>
+                
+                <h4> Blog Archives </h4>
+                    <a href={% url 'blog:archive_list' %}> Archived Posts </a>
+                
+                <br />
+                <br />
+                <div class="subscribe-form">
+                    <h4> Subscribe to blog posts by email </h4>
+                    <form id="subscribe" method="POST" action=".">
+                        {% csrf_token %}
+                        <input id="email_id" type="email" name="email_id" placeholder="your@email.com">
+                        <button type="submit" value="Subscribe" id="email_submit"> Subscribe </button>
+                    </form>
+                </div>
+                
+                <br />
+                <h4> Subscribe via rss </h4>
+                    <a href="{% url 'blog:feed' %}"> Rss </a>
+            </div>
+            
+        {% endblock %}
 
 		{% block footer %}
 		{% endblock %}
@@ -78,27 +106,55 @@
 			<!-- project javascript -->
 			<script src="{% static 'js/project.js' %}"></script>
 		    
-            <!-- need js.cookie -->
+            <!-- js-plugin to get csrftoken  -->
             <script src="{% static 'js/js.cookie.js' %}"></script>
 
             <script>
-                var csrftoken = Cookies.get('csrftoken');
-                function csrfSafeMethod(method) {
-                    // these HTTP methods do not requre CSRF protection
-                    return (/^(GET|HEAD|OPTIONS|TRACE)$/.test(method));
-                }
-                $.ajaxSetup({
-                    beforeSend: function(xhr, settings) {
-                        if (!csrfSafeMethod(settings.type) && !this.crossDomain) {
-                            xhr.setRequestHeader("X-CSRFToken", csrftoken);
-                        }
-
+                (function() {
+                    var csrftoken = Cookies.get('csrftoken');
+                    function csrfSafeMethod(method) {
+                        // these HTTP methods do not requre CSRF protection
+                        return (/^(GET|HEAD|OPTIONS|TRACE)$/.test(method));
                     }
-                });
+                    $.ajaxSetup({
+                        beforeSend: function(xhr, settings) {
+                            if (!csrfSafeMethod(settings.type) && !this.crossDomain) {
+                                xhr.setRequestHeader("X-CSRFToken", csrftoken);
+                            }
+                        }
+                    });
+                })();
 
                 $(document).ready(function(){
-                    {% block domready %}
+                    $('#subscribe').submit(function(e) {
+                        e.preventDefault();
+                        var email_id = $('#email_id').val();
 
+                        if (email_id) {
+                            var csrfmiddlewaretoken = csrftoken;
+                            var email_data = {'email_id': email_id,
+                                'csrfmiddlewaretoken': csrfmiddlewaretoken };
+                            
+                            $.ajax({
+                                type: 'POST',
+                                url: '/blog/subscribe/',
+                                data: email_data,
+                                success: function(response) {
+                                    $('#email_id').val('');
+                                    alert("Thank you for subscribing Check your email to confirm.");
+                                },
+                                error: function(response) {
+                                    alert("Something went wrong");
+                                    $('#email_id').val('');
+                                }
+                            });
+                            return false;
+                        } else {
+                            alert('Please provide correct email');
+                        }
+                    });
+
+                    {% block domready %} 
                     {% endblock %}
                 });
             </script>

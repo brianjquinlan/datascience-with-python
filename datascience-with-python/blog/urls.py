@@ -23,6 +23,12 @@ urlpatterns = [
     ),
 
     url(
+        regex = r'^subscribe/$',
+        view = views.subscribe,
+        name = 'subscribe'
+    ),
+
+    url(
         regex = r'^archive/$',
         view = views.ArchiveIndexView.as_view(),
         name = 'archive_list'
@@ -39,4 +45,5 @@ urlpatterns = [
         view = views.MonthlyArchiveView.as_view(),
         name = 'archive_month'
     ),
+
 ]

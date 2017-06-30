@@ -9,10 +9,10 @@
     
     {{ object.body|markdown }}
 
-    <p> Published by {{ object.author }} on {{ object.published }}. </p>
+    <p> Published by {{ object.author }} on {{ object.published }} </p>
     
     {% if object.updated != object.published %}
-        <p> Updated on {{ object.updated }}. </p> 
+        <p> Updated on {{ object.updated }} </p> 
     {% endif %}
     <p>
         Tags: 

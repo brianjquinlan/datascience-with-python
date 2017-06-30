@@ -1,9 +1,12 @@
 from django.shortcuts import render, get_object_or_404
+from django.http import JsonResponse, HttpResponse
 
 from django.views.generic import ListView, DetailView, ArchiveIndexView, MonthArchiveView
 
 from .models import Post
 from taggit.models import Tag
+
+from .utils import subscribe_email
 
 # Create your views here.
 
@@ -40,3 +43,13 @@ class MonthlyArchiveView(MonthArchiveView):
     date_field = 'published'
     
     template_name = 'blog/monthly_archive.html'
+
+def subscribe(request):
+    if request.method == 'POST':
+        email = request.POST['email_id']
+        print(email)
+        subscribe_email(email)
+
+    return HttpResponse("/")
+
+
