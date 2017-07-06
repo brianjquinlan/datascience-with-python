@@ -1,7 +1,7 @@
-{% extends 'base.html' %}
+{% extends 'full_page_base.html' %}
 
-{% block content %}
-    
+{% block main %}
+<div class="col-md-12">    
     <ul>
         {% for post in object_list %}
             <li> {{ post.title }} </li>
@@ -22,5 +22,5 @@
             </a>
         {% endif %}
     </p>
-
+</div>
 {% endblock %}

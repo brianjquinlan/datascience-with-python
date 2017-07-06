@@ -14,27 +14,30 @@
         	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.6/css/bootstrap.min.css" integrity="sha384-rwoIResjU2yc3z8GV/NPeZWAv56rSmLldC3R/AZzGRnGxQQKnKkoFVhFQhNUwEyJ" crossorigin="anonymous">
 
 			<!-- third party css -->
-
+            <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Poppins:400,300,500,600,700">
+            <link href="{% static 'css/hilite.css' %}" rel="stylesheet">
+            
 			<!-- site specific css -->
 			<link href="{% static 'css/style.css' %}" rel="stylesheet">
-            <link href="{% static 'css/hilite.css' %}" rel="stylesheet">
+
 		{% endblock %}
 
 		{% block scripts %}
+            <script src="https://use.fontawesome.com/48fcfe07d5.js"></script>
 		{% endblock %}
     </head>
     <body>
 
 		{% block nav %}
-            <nav class="navbar navbar-toggleable-sm">
+            <nav class="navbar navbar-toggleable-sm menu">
     			<button class="navbar-toggler navbar-toggler-right"
 					type="button" data-toggle="collapse" data-target="#navbar">
         				<span class="navbar-toggler-icon"> &#9776; </span>
     			</button>
     			
-				<a class="navbar-brand" href="{% url 'home' %}">DataScience with Python</a>
+				<a class="navbar-brand brand" href="{% url 'home' %}">DataScience with Python</a>
     			<div class="navbar-collapse collapse justify-content-end" id="navbar">
-        			<ul class="navbar-nav float-sm-right">
+        			<ul class="navbar-nav float-sm-right links">
 						<li class="nav-item">
 						    <a class="nav-link" href="{% url 'home' %}"> Home</a>
 						</li>
@@ -45,7 +48,7 @@
 						    <a class="nav-link" href="{% url 'blog:post_list' %}"> Blog </a>
 						</li>
         			</ul>
-  			  </div>
+  			    </div>
 			</nav>
 		{% endblock %}
 
@@ -57,37 +60,13 @@
 			{% endfor %}
 		{% endif %}
         
-        <div id="content">
-		    {% block content %}
-			    <p> content </p>
-		    {% endblock content	%}			
+        <div class="container-fluid" id="main">
+            <div class="row">
+			    {% block content %}
+					    <p> content </p>
+			    {% endblock content	%}
+		    </div>
         </div>
-
-        {% block sidebar %}
-            <div id="sidebar">
-                <h2> Machine Learning with Python </h3>
-                    <p> Posts about small machine learning projects </p>
-                
-                <h4> Blog Archives </h4>
-                    <a href={% url 'blog:archive_list' %}> Archived Posts </a>
-                
-                <br />
-                <br />
-                <div class="subscribe-form">
-                    <h4> Subscribe to blog posts by email </h4>
-                    <form id="subscribe" method="POST" action=".">
-                        {% csrf_token %}
-                        <input id="email_id" type="email" name="email_id" placeholder="your@email.com">
-                        <button type="submit" value="Subscribe" id="email_submit"> Subscribe </button>
-                    </form>
-                </div>
-                
-                <br />
-                <h4> Subscribe via rss </h4>
-                    <a href="{% url 'blog:feed' %}"> Rss </a>
-            </div>
-            
-        {% endblock %}
 
 		{% block footer %}
 		{% endblock %}
@@ -101,8 +80,6 @@
 			<!-- Javascript -->
 			<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.6/js/bootstrap.min.js" integrity="sha384-vBWWzlZJ8ea9aCX4pEW3rVHjgjt7zpkNpZk+02D9phzyeVkE+jo0ieGizqPLForn" crossorigin="anonymous"></script>
 
-			<!-- third-party javascript -->
-
 			<!-- project javascript -->
 			<script src="{% static 'js/project.js' %}"></script>
 		    
@@ -110,7 +87,7 @@
             <script src="{% static 'js/js.cookie.js' %}"></script>
 
             <script>
-                (function() {
+                //(function() {
                     var csrftoken = Cookies.get('csrftoken');
                     function csrfSafeMethod(method) {
                         // these HTTP methods do not requre CSRF protection
@@ -123,7 +100,7 @@
                             }
                         }
                     });
-                })();
+                //})();
 
                 $(document).ready(function(){
                     $('#subscribe').submit(function(e) {

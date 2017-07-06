@@ -1,32 +1,51 @@
-{% extends 'base.html' %}
+{% extends 'full_page_base.html' %}
 
 {% load blog_tags %}
 
-{% block content %}
+
+{% block page_title %}
     <h1> {{ object.title }} </h2>
-    
-    <img src="{{ object.image.url }}" width="300px" height="150px">
-    
-    {{ object.body|markdown }}
-
-    <p> Published by {{ object.author }} on {{ object.published }} </p>
-    
-    {% if object.updated != object.published %}
-        <p> Updated on {{ object.updated }} </p> 
-    {% endif %}
-    <p>
-        Tags: 
-        {% for tag in object.tags.all %}
-            <a href="{% url 'blog:list_by_tag' tag.slug %}">
-                {{ tag.name }}
-            </a>
-            {% if not forloop.last %}, {% endif %}
-        
-        {% empty %}
-            no tags yet.
-
-        {% endfor %}
-
-    </p>
-
 {% endblock %}
+
+{% block main %}
+    <div class="container">
+	<div class="col-md-12 blog-post">
+		
+		
+		<div class="post-info">
+			<span> 
+
+                <i class="fa fa-user-o space"></i>  {{ object.author }}
+                <i class="fa fa-eye space"></i> {{ object.views }} views
+                <i class="fa fa-calendar space"></i> {{ object.published.date }}
+                
+                {% if object.updated != object.published %}
+                    {# <br /> Updated on {{ object.updated }} <br /> #} 
+				{% endif %}
+
+			</span>
+		</div>
+
+        {# <img src="{{ object.image.url }}" width="300px" height="150px"> #}
+        <img src="{{ object.image.url }}" class="img-fluid" >
+
+
+		{{ object.body|markdown }}
+
+		<p> 
+		    {% for tag in object.tags.all %}
+			    <a id="tag" href="{% url 'blog:list_by_tag' tag.slug %}">
+				    {{ tag.name }} 
+				</a>
+
+			    {% if not forloop.last %}, {% endif %}
+				
+			{% empty %}
+			    no tags yet.
+			{% endfor %}
+		</p>
+	</div>
+    </div>
+{% endblock %}
+
+

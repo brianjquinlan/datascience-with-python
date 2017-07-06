@@ -23,14 +23,17 @@ html {
 body {
     /* margin bottom by footer height */
     margin-bottom: 100px;
-    min-height: 100%;
-
+    min-height: 100%; 
+    font-family: "Poppins", sans-serif;
+    background: #fafafa !important;
 }
 
-#content {
-    float: left;
-    width: 65%;
-    padding: 0 0 0 30px;
+#main {
+    margin: 50px 0;
+}
+    
+.main-color {
+    color: #1abc9c;
 }
 
 .primary-footer {
@@ -42,19 +45,141 @@ body {
     padding-bottom: 10px;
 }
 
+a {
+    text-decoration: none !important;
+    color: #1abc9c;
+}
+
+a:hover,
+a:focus,
+a:active {
+    text-decoration: none;
+    outline: none;
+    color: #333333
+}
+
 /* display django-debug-toolbar */
 [hidden][style="display: block;"] {
     display: block !important;
 }
 
 /* navbar */
+.menu {
+    color: #fff;
+    background: #1abc9c;
+    padding: 12px;
+}
 
+.brand {
+    color: #333333;
+    transition: all 0.3s ease-in-out;
+}
+
+.brand:hover {
+    color: #ffffff;
+}
+
+.links li a {
+    color: #333333;
+    transition: all 0.3s ease-in-out;
+}
+
+.links li a:hover {
+    color: #ffffff;
+}
 
 /* sidebar */
-#sidebar {
-    float: right;
-    width: 35%;
+.sidebar {
+    text-align: center;
+    padding: 15px 0 15px 0; 
+    margin-bottom: 30px;
+    background: #ffffff;
+    box-shadow: -2px -1px 88px 0px rgba(0,0,0,0.17);
+}
+
+.sidebar h2 { 
+    font-size: 23px;
+}
+
+.sidebar h4 {
+    font-size: 20px;
+}
+
+.sidebar span {
+    color: #c1c1c1;
+    font-weight: 400;
+    line-height: 10px;
+    font-size 13px;
+
+}
+
+.border {
+    border-bottom: 1px dashed #cccccc;
+    padding-bottom: 5px;
+    margin-bottom: 20px;
+
+}
+
+.subscribe-form-text {
+    margin-top: 5px;
     padding: 10px;
-    background: #efefef;
-    height: 100%;
+    border-radius: 15px;
+    border: solid 3px #1abc9c;
+    outline: none;
+}
+
+.subscribe-form button {
+    margin-top: 5px;
+    font-size: 18px;
+    letter-spacing: 0.7px;
+    color: #FFF;
+    background: #1abc9c;
+    border: solid 3px #1abc9c;
+    border-radius: 8px;
+    text-align: center;
+    outline: none;
+}
+
+.subscribe-form button:hover {
+    opacity: .8;
+}
+
+/* main content */
+.title {
+    padding: 30px;
+    font-size: 25px;
+    letter-spacing: 0.5px;
+    font-weight: 600;
+}
+
+.page {
+    padding-top: 15px;
+    background: #ffffff;
+    box-shadow: -2px -1px 88px 0px rgba(0,0,0,0.17);
+}
+
+.page-content {
+    padding-top: 30px;
+    padding-bottom: 50px;
+    border-top: 1px dashed #dedede;
+    border-bottom: 1px dashed #dedede;
+}
+
+/* blog post */
+.blog-post .post-info {
+    font-size: 14px;
+    line-height: 30px;
+    font-weight: 500;
+    padding: 10px 0;
+    color: #8c9c9c;
+}
+
+.space {
+    padding-left: 10px;
+}
+
+#tag {
+    padding: 2px 6px 2px 6px;
+    background: #1abc9c;
+    color: #fff;
 }

@@ -1,0 +1,18 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<div class="col-md-12">
+    <div class="col-md-12 page">
+        <div class="title">
+            {% block page_title %}
+            {% endblock %}
+        </div>
+
+        <div class="page-content">
+            {% block main %}
+                <p> content </p>
+            {% endblock %}
+        </div>
+    </div>
+</div>
+{% endblock %}

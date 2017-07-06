@@ -10,7 +10,7 @@ Shpinx==1.5.5
 Pygments==2.2.0
 
 # subscription mailing
-mailchimp==2.0.9
+mailchimp3==2.0.14
 
 # images
 Pillow==9.0.1
