@@ -4,10 +4,12 @@ from .models import Post
 
 # Register your models here.
 
+@admin.register(Post)
 class PostAdmin(admin.ModelAdmin):
-    list_display = ('title', 'slug', 'author', 'published')
-    search_fields = ('title')
-    raw_id_fields = ('author',)
-    date_hierarchy = 'published'
 
-admin.site.register(Post)
+    list_display = ('title', 'author', 'published', )
+    search_fields = ('title',)
+    date_hierarchy = 'published'
+    exclude = ('slug', 'views',)
+
+# admin.site.register(Post)
