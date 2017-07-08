@@ -30,6 +30,22 @@ class PostDetailView(DetailView):
     model = Post
     template_name = 'blog/detail.html'
 
+    def get_object(self):
+        post = super().get_object()
+
+        # view key for different blog posts
+        key = 'viewed' + str(post)
+
+        print(self.request.user_agent.is_bot) 
+        # increment view total
+        if not self.request.session.get(key , False) and not self.request.user_agent.is_bot:   
+            self.request.session[key] = True 
+            
+            post.views += 1
+            post.save()
+       
+        return post
+
 class ArchiveIndexView(ArchiveIndexView):
     queryset = Post.objects.all()
 
@@ -47,7 +63,6 @@ class MonthlyArchiveView(MonthArchiveView):
 def subscribe(request):
     if request.method == 'POST':
         email = request.POST['email_id']
-        print(email)
         subscribe_email(email)
 
     return HttpResponse("/")

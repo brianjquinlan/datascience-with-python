@@ -30,7 +30,6 @@ DJANGO_APPS = [
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
-    'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'django.contrib.sites',
@@ -39,6 +38,7 @@ DJANGO_APPS = [
 THIRD_PARTY_APPS = [
     'taggit',
     'sorl.thumbnail',
+    'django_user_agents',
 ]
 
 LOCAL_APPS = [
@@ -58,6 +58,7 @@ MIDDLEWARE_CLASSES = [
     'django.contrib.auth.middleware.SessionAuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
+    'django_user_agents.middleware.UserAgentMiddleware',
 ]
 
 # Database
@@ -111,10 +112,6 @@ AUTH_PASSWORD_VALIDATORS = [
 # what's used to send emails
 EMAIL_BACKEND = env('DJANGO_EMAIL_BACKEND')
 
-# mailchimp keys
-MAILCHIMP_API_KEY = env('MAILCHIMP_API_KEY')
-MAILCHIMP_SUBSCRIBE_LIST_ID = env('MAILCHIMP_SUBSCRIBE_LIST_ID')
-
 # admins of site
 ADMINS = (
 	("""Brian Quinlan""", 'bquinlan8@yahoo.com'),
@@ -155,3 +152,10 @@ WSGI_APPLICATION = 'config.wsgi.application'
 
 
 ADMIN_URL = r'^admin/'
+
+# third party
+USER_AGENTS_CACHE = 'default'
+
+# mailchimp keys
+MAILCHIMP_API_KEY = env('MAILCHIMP_API_KEY')
+MAILCHIMP_SUBSCRIBE_LIST_ID = env('MAILCHIMP_SUBSCRIBE_LIST_ID')
