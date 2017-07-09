@@ -1,19 +1,25 @@
 from django.conf import settings
 from mailchimp3 import MailChimp
 
-"""
-mailchimp using v2
-def subscribe_email(email):
-    
-    api = mailchimp.Mailchimp(settings.MAILCHIMP_API_KEY)
-    api.lists.subscribe(settings.MAILCHIMP_SUBSCRIBE_LIST_ID, {'email': email})
-"""
+from requests.exceptions import HTTPError
 
 # mailchimp v3
 def subscribe_email(email):
+
     client = MailChimp('brianjquinlan8', settings.MAILCHIMP_API_KEY)
-    client.lists.members.create(settings.MAILCHIMP_SUBSCRIBE_LIST_ID,
-        {'email_address': email, 'status':'pending'})
+    
+    try:
+        client.lists.members.create(settings.MAILCHIMP_SUBSCRIBE_LIST_ID,
+            {'email_address': email, 'status':'pending'})
+
+        return 200
+
+    except HTTPError as e:
+        # 400 error
+        print(e)
+        code = e.response.status_code
+        if code == 400:
+            return code
 
 def unsubscribe_email(email):
 	pass

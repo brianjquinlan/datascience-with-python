@@ -115,10 +115,17 @@
                             $.ajax({
                                 type: 'POST',
                                 url: '/blog/subscribe/',
+                                dataType: 'json',
                                 data: email_data,
                                 success: function(response) {
                                     $('#email_id').val('');
-                                    alert("Thank you for subscribing Check your email to confirm.");
+
+                                    if (response.status_code == '400') {
+                                        alert("This email is already part of this list");
+
+                                    } else {
+                                        alert("Thank you for subscribing Check your email to confirm.");
+                                    }
                                 },
                                 error: function(response) {
                                     alert("Something went wrong");

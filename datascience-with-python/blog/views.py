@@ -65,7 +65,13 @@ class MonthlyArchiveView(MonthArchiveView):
 def subscribe(request):
     if request.method == 'POST':
         email = request.POST['email_id']
-        subscribe_email(email)
+        status = subscribe_email(email)
+   
+        data = {
+            'status_code': status
+        }
+
+        return JsonResponse(data)
 
     return HttpResponse("/")
 
