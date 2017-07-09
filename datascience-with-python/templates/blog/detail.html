@@ -1,5 +1,7 @@
 {% extends 'full_page_base.html' %}
 
+{% load comments %}
+{% load comments_xtd %}
 {% load blog_tags %}
 
 
@@ -35,15 +37,38 @@
 		<p> 
 		    {% for tag in object.tags.all %}
 			    <a id="tag" href="{% url 'blog:list_by_tag' tag.slug %}">
-				    {{ tag.name }} 
+				    {{ tag.name }}
 				</a>
-
-			    {% if not forloop.last %}, {% endif %}
+                
+                {% if not forloop.last %} &nbsp; {% endif %}
 				
 			{% empty %}
 			    no tags yet.
 			{% endfor %}
 		</p>
+
+        {# comments #}
+        {% get_comment_count for object as comment_count %}
+        <div class="text-center" style="padding-top:20px">
+            <a href="{% url 'blog:post_list' %}"> back to post list </a>
+                &nbsp;&sdot;&nbsp;
+                {{ comment_count }} comments have been posted.
+        </div>
+        
+        <div class="comment">
+            <h4 class="text-center"> Your comment </h4>
+            <div class="well">
+                {% render_comment_form for object %}
+            </div>
+        </div>
+
+        {% if comment_count %}
+            <hr/>
+            <ul class="list-unstyled">
+                {% render_xtdcomment_tree for object %}
+            </ul>
+        {% endif %}
+
 	</div>
     </div>
 {% endblock %}

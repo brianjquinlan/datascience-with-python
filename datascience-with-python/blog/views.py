@@ -14,18 +14,21 @@ class PostListView(ListView):
     model = Post
     context_object_name = 'posts'
     template_name = 'blog/list.html'
-    
+    title = 'Blog List'
+
     def get_queryset(self):
         qs = super().get_queryset()
 
         tag_slug = self.kwargs.get('tag_slug', None)
         if tag_slug:
+            self.title = 'Posts tagged with %s' % tag_slug
+
             tag = get_object_or_404(Tag, slug=tag_slug)
             return qs.filter(tags__in=[tag])
 
         else:
             return qs[:10]
-
+ 
 class PostDetailView(DetailView):
     model = Post
     template_name = 'blog/detail.html'
@@ -35,8 +38,7 @@ class PostDetailView(DetailView):
 
         # view key for different blog posts
         key = 'viewed' + str(post)
-
-        print(self.request.user_agent.is_bot) 
+ 
         # increment view total
         if not self.request.session.get(key , False) and not self.request.user_agent.is_bot:   
             self.request.session[key] = True 

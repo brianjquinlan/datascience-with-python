@@ -39,6 +39,8 @@ THIRD_PARTY_APPS = [
     'taggit',
     'sorl.thumbnail',
     'django_user_agents',
+    'django_comments_xtd',
+    'django_comments',
 ]
 
 LOCAL_APPS = [
@@ -154,6 +156,22 @@ WSGI_APPLICATION = 'config.wsgi.application'
 ADMIN_URL = r'^admin/'
 
 # third party
+
+#comments
+COMMENTS_APP = 'django_comments_xtd'
+COMMENTS_XTD_MAX_THREAD_LEVEL = 2
+COMMENTS_XTD_CONFIRM_EMAIL = False
+
+# COMMENTS_XTD_LIST_ORDER = ('thread_id', 'order')  # default
+
+# if I change above to true I need these settings
+# COMMENTS_XTD_SALT(b"will change this"
+#                   b"will forsure change this")
+
+# COMMENTS_XTD_FROM_EMAIL = 'noreplay@datascience-with-python.com'
+# COMMENTS_XTD_CONTACT_EMAIL = 'help@datascience-with-python.com'
+
+# user agent
 USER_AGENTS_CACHE = 'default'
 
 # mailchimp keys

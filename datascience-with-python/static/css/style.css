@@ -183,3 +183,19 @@ a:active {
     background: #1abc9c;
     color: #fff;
 }
+
+.comments-space {
+    padding-top: 8px;
+    padding-bottom: 8px;
+}
+
+
+/* text size for mobile */
+@media only screen and (max-width: 500px) {
+    
+    html {
+        font-size: .92em;
+
+    }
+
+}
