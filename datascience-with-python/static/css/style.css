@@ -91,10 +91,10 @@ a:active {
 /* sidebar */
 .sidebar {
     text-align: center;
-    padding: 15px 0 15px 0; 
-    margin-bottom: 30px;
+    padding: 15px 0 15px 0;
+    /*margin-bottom: 30px;*/
     background: #ffffff;
-    box-shadow: -2px -1px 88px 0px rgba(0,0,0,0.17);
+    box-shadow: -2px -1px 60px 0px rgba(0,0,0,0.17);
 }
 
 .sidebar h2 { 
@@ -155,14 +155,13 @@ a:active {
 .page {
     padding-top: 15px;
     background: #ffffff;
-    box-shadow: -2px -1px 88px 0px rgba(0,0,0,0.17);
+    box-shadow: -2px -1px 60px 0px rgba(0,0,0,0.17);
 }
 
 .page-content {
     padding-top: 30px;
     padding-bottom: 50px;
     border-top: 1px dashed #dedede;
-    border-bottom: 1px dashed #dedede;
 }
 
 /* blog post */

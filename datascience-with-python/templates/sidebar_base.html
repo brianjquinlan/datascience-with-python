@@ -1,8 +1,9 @@
 {% extends 'base.html' %}
+{% load staticfiles %}
 
 {%  block content %}
-	<div class="col-sm-12 col-md-8">
-        <div class="col-md-12 page">
+	<div class="col-sm-12 col-md-7 page mx-md-3">
+        {#<div class="col-md-12 page">#}
             <div class="title">
                 {% block page_title %}
                 {% endblock %}
@@ -13,10 +14,10 @@
 			        <p> content </p>
 		        {% endblock %}
             </div>
-        </div>
+        {#</div>#}
 	</div>
 
-	<div class="col-sm-12 col-md-4 sidebar">
+    <div class="col-sm-12 col-md-4 sidebar">
 		{% block sidebar %}
             <div class="border">
 				<h2> Machine Learning with Python </h3>
@@ -43,5 +44,9 @@
 				<h4> Subscribe via rss </h4>
 					<a href="{% url 'blog:feed' %}"> Rss </a>
 		{% endblock %}
-	</div>
+    </div>
+{% endblock %}
+
+{% block javascript %}
+    <script src="{% static 'js/subscribe.js' %}"></script>
 {% endblock %}

@@ -71,79 +71,22 @@
 		{% block footer %}
 		{% endblock %}
 
-	 	{% block javascript %}
-			<!-- jQuery -->
-			<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
-			<!-- requirement for bootstrap -->
-     	 	<script src="https://cdnjs.cloudflare.com/ajax/libs/tether/1.2.0/js/tether.min.js"></script>
-			
-			<!-- Javascript -->
-			<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.6/js/bootstrap.min.js" integrity="sha384-vBWWzlZJ8ea9aCX4pEW3rVHjgjt7zpkNpZk+02D9phzyeVkE+jo0ieGizqPLForn" crossorigin="anonymous"></script>
+		<!-- jQuery -->
+		<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+		<!-- requirement for bootstrap -->
+ 	 	<script src="https://cdnjs.cloudflare.com/ajax/libs/tether/1.2.0/js/tether.min.js"></script>
+		
+		<!-- Javascript -->
+		<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.6/js/bootstrap.min.js" integrity="sha384-vBWWzlZJ8ea9aCX4pEW3rVHjgjt7zpkNpZk+02D9phzyeVkE+jo0ieGizqPLForn" crossorigin="anonymous"></script>
 
-			<!-- project javascript -->
-			<script src="{% static 'js/project.js' %}"></script>
-		    
-            <!-- js-plugin to get csrftoken  -->
-            <script src="{% static 'js/js.cookie.js' %}"></script>
+		<!-- js-plugin to get csrftoken  -->
+        <script src="{% static 'js/js.cookie.js' %}"></script>
 
-            <script>
-                //(function() {
-                    var csrftoken = Cookies.get('csrftoken');
-                    function csrfSafeMethod(method) {
-                        // these HTTP methods do not requre CSRF protection
-                        return (/^(GET|HEAD|OPTIONS|TRACE)$/.test(method));
-                    }
-                    $.ajaxSetup({
-                        beforeSend: function(xhr, settings) {
-                            if (!csrfSafeMethod(settings.type) && !this.crossDomain) {
-                                xhr.setRequestHeader("X-CSRFToken", csrftoken);
-                            }
-                        }
-                    });
-                //})();
-
-                $(document).ready(function(){
-                    $('#subscribe').submit(function(e) {
-                        e.preventDefault();
-                        var email_id = $('#email_id').val();
-
-                        if (email_id) {
-                            var csrfmiddlewaretoken = csrftoken;
-                            var email_data = {'email_id': email_id,
-                                'csrfmiddlewaretoken': csrfmiddlewaretoken };
-                            
-                            $.ajax({
-                                type: 'POST',
-                                url: '/blog/subscribe/',
-                                dataType: 'json',
-                                data: email_data,
-                                success: function(response) {
-                                    $('#email_id').val('');
-
-                                    if (response.status_code == '400') {
-                                        alert("This email is already part of this list");
-
-                                    } else {
-                                        alert("Thank you for subscribing Check your email to confirm.");
-                                    }
-                                },
-                                error: function(response) {
-                                    alert("Something went wrong");
-                                    $('#email_id').val('');
-                                }
-                            });
-                            return false;
-                        } else {
-                            alert('Please provide correct email');
-                        }
-                    });
-
-                    {% block domready %} 
-                    {% endblock %}
-                });
-            </script>
-            
+		<!-- project javascript -->
+		<script src="{% static 'js/project.js' %}"></script>
+		 
+		{% block javascript %}   
         {% endblock %}
-        
+
     </body>
 </html>
