@@ -16,7 +16,8 @@
 			<!-- third party css -->
             <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Poppins:400,300,500,600,700">
             <link href="{% static 'css/hilite.css' %}" rel="stylesheet">
-            
+            <link href="{% static 'css/sweetalert.css' %}" rel="stylesheet">
+
 			<!-- site specific css -->
 			<link href="{% static 'css/style.css' %}" rel="stylesheet">
 
@@ -42,11 +43,14 @@
 						    <a class="nav-link" href="{% url 'home' %}"> Home</a>
 						</li>
 						<li class="nav-item">
-						    <a class="nav-link" href="#"> About </a>
+                            <a class="nav-link" href="{% url 'about' %}"> About </a>
 						</li>
 						<li class="nav-item">
 						    <a class="nav-link" href="{% url 'blog:post_list' %}"> Blog </a>
 						</li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="#"> Interactive Python </a>
+                        </li>
         			</ul>
   			    </div>
 			</nav>
@@ -79,12 +83,17 @@
 		<!-- Javascript -->
 		<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.6/js/bootstrap.min.js" integrity="sha384-vBWWzlZJ8ea9aCX4pEW3rVHjgjt7zpkNpZk+02D9phzyeVkE+jo0ieGizqPLForn" crossorigin="anonymous"></script>
 
+        <!-- third party js -->
+        <!-- fancy alert box's -->
+        <script src="{% static 'js/sweetalert.min.js' %}"></script>
+
 		<!-- js-plugin to get csrftoken  -->
         <script src="{% static 'js/js.cookie.js' %}"></script>
+        
 
 		<!-- project javascript -->
 		<script src="{% static 'js/project.js' %}"></script>
-		 
+
 		{% block javascript %}   
         {% endblock %}
 
