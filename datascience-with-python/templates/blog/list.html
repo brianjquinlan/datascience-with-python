@@ -7,6 +7,12 @@
 
 {% block main %}
     {% for post in posts %}
+
+		<span> 
+			<i class="fa fa-calendar"></i> {{ post.published.date }} 
+            <i class="fa fa-user-o"></i> {{ post.author.username }} 
+        </span>
+
         <h2> {{ post.title }} </h2>
         
         <img src="{{ post.image.url }}" class="img-fluid">
@@ -14,9 +20,7 @@
         {{ post.body|truncatewords:20|markdown }}
 
         <a href="{{ post.get_absolute_url }}"> read more </a>
-        <p> <i class="fa fa-calendar"></i> {{ post.published.date }} 
-            <i class="fa fa-user-o"></i> {{ post.author }} 
-        </p>
+        <br><br>
 
     {% empty %}
         <p> no posts yet. </p>
