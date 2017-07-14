@@ -30,3 +30,6 @@ django-user-agents==0.3.0
 
 # comments
 django-comments.xtd==2.0.2
+
+# sharing posts
+django-social-share==1.1.2

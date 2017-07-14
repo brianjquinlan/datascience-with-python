@@ -13,7 +13,7 @@
 
             {{ post.body|truncatewords:20|markdown }}
 
-            <a href="{% url 'blog:post_detail' post.slug %}"> read more </a>
+            <a href="{{ post.get_absolute_url }}"> read more </a>
             <p> 
                 <i class="fa fa-calendar"></i> {{ post.published.date }}
                 <i class="fa fa-user-o"></i> {{ post.author }}

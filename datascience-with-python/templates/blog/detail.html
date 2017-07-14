@@ -3,7 +3,7 @@
 {% load comments %}
 {% load comments_xtd %}
 {% load blog_tags %}
-
+{% load social_share %}
 
 {% block page_title %}
     <h1> {{ object.title }} </h2>
@@ -25,10 +25,15 @@
 			</span>
 		</div>
 
-        {# <img src="{{ object.image.url }}" width="300px" height="150px"> #}
         <img src="{{ object.image.url }}" class="img-fluid" >
 
-
+        <br />
+        <div class="row share-buttons">
+            {% post_to_facebook link_text="<i class='fa fa-facebook fa-fw'></i>" %}
+            {% post_to_gplus link_text="<i class='fa fa-google-plus fa-fw'></i>" %}
+            {% post_to_twitter "New post found" link_text="<i class='fa fa-twitter fa-fw'></i>" %}
+        </div>
+        <br />
 		{{ object.body|markdown }}
 
 		<p> 

@@ -27,7 +27,7 @@ urlpatterns = [
     url(r'^about$', TemplateView.as_view(template_name='site/about.html'), name='about'),
     url(r'^admin/', admin.site.urls),
     url(r'^blog/', include('datascience-with-python.blog.urls', namespace='blog')),
-    url(r'comments/', include('django_comments_xtd.urls')),
+    url(r'^comments/', include('django_comments_xtd.urls')),
 
 ]
 

@@ -14,8 +14,7 @@ from taggit.managers import TaggableManager
 class Post(models.Model):
 
     title = models.CharField(max_length=250)
-    slug = models.SlugField()
-    
+    slug = models.SlugField(max_length=250, unique_for_date='published')
     author = models.ForeignKey(User, related_name='blog_posts')
     body = models.TextField()
     image = models.ImageField(upload_to='images/blog_posts/', blank=True, null=True)
@@ -31,7 +30,8 @@ class Post(models.Model):
         ordering = ('-published',)
 
     def get_absolute_url(self):
-        return reverse('blog:post_detail', args= [self.slug])
+        return reverse('blog:post_detail', args=[self.published.year,
+            self.published.strftime('%b').lower(), self.slug])
 
     def save(self, *args, **kwargs):
         self.slug = slugify(self.title)

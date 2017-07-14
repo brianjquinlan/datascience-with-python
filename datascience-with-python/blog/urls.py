@@ -35,7 +35,7 @@ urlpatterns = [
     ),
 
     url(
-        regex = r'^(?P<slug>[-\w]+)/$',
+        regex = r'^(?P<year>\d{4})/(?P<month>[-\w]+)/(?P<slug>[-\w]+)/$',
         view = views.PostDetailView.as_view(),
         name = 'post_detail'
     ),

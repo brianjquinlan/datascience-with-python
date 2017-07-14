@@ -41,6 +41,7 @@ THIRD_PARTY_APPS = [
     'django_user_agents',
     'django_comments_xtd',
     'django_comments',
+    'django_social_share',
 ]
 
 LOCAL_APPS = [

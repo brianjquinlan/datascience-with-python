@@ -6,6 +6,8 @@ from django.views.generic import ListView, DetailView, ArchiveIndexView, MonthAr
 from .models import Post
 from taggit.models import Tag
 
+from django_comments.models import Comment
+
 from .utils import subscribe_email
 
 # Create your views here.
@@ -15,6 +17,14 @@ class PostListView(ListView):
     context_object_name = 'posts'
     template_name = 'blog/list.html'
     title = 'Blog List'
+
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+       
+        recent_comments = Comment.objects.all().order_by('-id')[:3]
+        context['comments'] = recent_comments
+
+        return context
 
     def get_queryset(self):
         qs = super().get_queryset()
