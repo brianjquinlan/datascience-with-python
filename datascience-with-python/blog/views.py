@@ -40,19 +40,27 @@ class PostListView(ListView):
             self.title = 'Posts tagged with %s' % tag_slug
             
             tag = get_object_or_404(Tag, slug=tag_slug)
-        
-            if cache.get('tagged_posts') is not None:
-                return cache.get('tagged_posts')
+            
+            tagged_posts = cache.get('tagged_posts')
+            
+            if tagged_posts:
+                return tagged_posts
             else:
-                cache.set('tagged_posts', qs.select_related('author').filter(tags__in=[tag]))
-                return qs.select_related('author').filter(tags__in=[tag])
+                tagged_posts = qs.select_related('author').filter(tags__in=[tag])
+                cache.set('tagged_posts', tagged_posts)
+
+                return tagged_posts
 
         else:
-            if cache.get('blog_posts') is not None:
-                return cache.get('blog_posts')
+            blog_posts = cache.get('blog_posts')
+
+            if blog_posts:
+                return blog_posts
             else:
-                cache.set('blog_posts', qs.select_related('author')[:5])
-                return qs.select_related('author')[:5]
+                blog_posts = qs.select_related('author')[:5]
+                cache.set('blog_posts', blog_posts)
+
+                return blog_posts
 
     @method_decorator(cache_page(60*15))
     def dispatch(self, *args, **kwargs):
@@ -76,7 +84,7 @@ class PostDetailView(DetailView):
             post.save()
         
         cache_key = 'blog_' + str(post.slug)
-        if cache.get(cache_key) is not None:
+        if cache.get(cache_key):
             return cache.get(cache_key)
         else:
             cache.set(cache_key, post)

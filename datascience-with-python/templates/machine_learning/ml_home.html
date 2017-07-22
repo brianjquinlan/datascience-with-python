@@ -1,0 +1,13 @@
+{% extends 'full_page_base.html' %}
+
+{% block page_title %}
+    {{ title }}
+{% endblock %}
+
+{% block main %}
+
+    <a href="{% url 'machine_learning:pandas' %}"> pandas </a>
+    <a href="{% url 'machine_learning:numpy' %}"> numpy </a>
+    <a href="{% url 'machine_learning:scikitlearn' %}"> scikit-learn </a>
+
+{% endblock %}
