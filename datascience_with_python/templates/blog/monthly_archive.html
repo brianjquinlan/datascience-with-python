@@ -1,0 +1,41 @@
+{% extends 'full_page_base.html' %}
+{% load blog_tags %}
+
+{% block page_title %}
+    <h2> {{ month|date:"F Y" }} </h2>
+{% endblock %}
+
+{% block main %}
+<div class="col-md-12">    
+    <ul>
+        {% for post in object_list %}
+			<span>
+                <i class="fa fa-calendar"></i> {{ post.published.date }}
+                {#<i class="fa fa-user-o"></i> {{ post.author }} #}
+			</span>
+				
+            <h2> {{ post.title }} </h2>
+            
+            {{ post.body|truncatewords_html:20|markdown }}
+
+            <a href="{{ post.get_absolute_url }}"> read more </a>
+           	<br><br>
+
+        {% endfor %}
+    </ul>
+
+    <p>
+        {% if previous_month %}
+            <a href="{% url 'blog:archive_month' previous_month|date:"Y" previous_month|date:"b" %}">
+                Previous Month: {{ previous_month|date:"F Y" }}
+            </a>
+        {% endif %}
+
+        {% if next_month %}
+            <br /><a href="{% url 'blog:archive_month' next_month|date:"Y" next_month|date:"b" %}">
+                Next Month: {{ next_month|date:"F Y" }}
+            </a>
+        {% endif %}
+    </p>
+</div>
+{% endblock %}

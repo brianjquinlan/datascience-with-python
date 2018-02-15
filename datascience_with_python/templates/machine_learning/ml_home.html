@@ -1,0 +1,15 @@
+{% extends 'full_page_base.html' %}
+
+{% block page_title %}
+    {{ title }}
+{% endblock %}
+
+{% block main %}
+    {% for lib in libraries %}
+        <div class="">
+            <a href="{% url 'machine_learning:interactive' lib %}"> 
+                {{ lib }} </a>
+        </div>
+
+    {% endfor %}
+{% endblock %}

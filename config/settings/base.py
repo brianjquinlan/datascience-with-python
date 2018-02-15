@@ -15,7 +15,7 @@ import environ
 env = environ.Env()
 
 ROOT_DIR = environ.Path(__file__) - 3
-APPS_DIR = ROOT_DIR.path('datascience-with-python')
+APPS_DIR = ROOT_DIR.path('datascience_with_python')
 
 # Debug
 DEBUG = env.bool('DJANGO_DEBUG', False)
@@ -33,6 +33,7 @@ DJANGO_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'django.contrib.sites',
+    'django.contrib.postgres',
 ]
 
 THIRD_PARTY_APPS = [
@@ -46,7 +47,8 @@ THIRD_PARTY_APPS = [
 
 LOCAL_APPS = [
     # apps you create go here
-    'datascience-with-python.blog',
+    'datascience_with_python.blog',
+    'datascience_with_python.machine_learning',
 ]
 
 INSTALLED_APPS = DJANGO_APPS + THIRD_PARTY_APPS + LOCAL_APPS 

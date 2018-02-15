@@ -1,0 +1,50 @@
+{% extends 'base.html' %}
+{% load staticfiles %}
+
+{% block content %}
+    <div class="col-sm-12 mb-sm-3 col-md-7 mx-md-3 page">
+            <div class="title">
+                {% block page_title %}
+                {% endblock %}
+            </div>
+
+            <div class="page-content">
+		        {% block main %}
+			        <p> content </p>
+		        {% endblock %}
+            </div>
+	</div>
+    <div class="col-sm-12 col-md-4 no-padding">
+		{% block sidebar %}
+			<div class="sidebar mb-sm-3">
+		        <div class="border">
+					<h2> Data Science with Python </h3>
+						<span> Posts about small machine learning projects </span>
+				</div>
+
+					<h4> Blog Archives </h4>
+						<a href={% url 'blog:archive_list' %}> Archived Posts </a>
+								
+					<br />
+					<br />
+		            
+					<div class="subscribe-form">
+		                <h4> Subscribe by email </h4>
+		                <span> Enter your email to subscribe to machine learning blog posts </span>
+							<form id="subscribe" method="POST">
+								{% csrf_token %}
+							   	<input class="subscribe-form-text" id="email_id" type="email" name="email_id" placeholder="your@email.com">
+							  	<button type="submit" value="Subscribe" id="email_submit"> Subscribe </button>
+						 	</form>
+			
+		            </div>		    
+			</div>
+				{% block sidebar_content %}
+		      	{% endblock %}
+		{% endblock %}
+    </div>
+{% endblock %}
+
+{% block javascript %}
+    <script src="{% static 'js/subscribe.js' %}"></script>
+{% endblock %}

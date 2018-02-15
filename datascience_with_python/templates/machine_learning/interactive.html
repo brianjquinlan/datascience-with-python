@@ -1,0 +1,46 @@
+{% extends 'full_page_base.html' %}
+
+{% block page_title %}
+    {{ title|upper }}
+{% endblock %}
+
+{% block main %} 
+    {% regroup command_list by section as section_list %}
+
+    {% for commands in section_list %}
+        <h2> {{ commands.grouper }} </h2> <br />
+
+        {% for command in commands.list %}
+            <p> {{ command.title }} </p> <br />
+
+            {# datacamp javascript #}
+   			<div class="col-md-6">
+    			<div data-datacamp-exercise data-lang="python">
+        			<code data-type="pre-exercise-code">
+            			# this gets executed each time the exercise is initialized
+            			import pandas as pd
+        			</code>
+        			<code data-type="sample-code">
+            			{{ command.method }}
+        			</code>
+        			<code data-type="solution">
+            			# not needed right now
+        			</code>
+       				 <code data-type="sct">
+						{# this is to test the answer for the solution #}
+        			</code>
+					<br />
+					<br />
+    			</div>
+  		 	</div>
+
+        {% endfor %}
+    {% endfor %}
+
+    
+
+{% endblock %}
+
+{% block javascript %}
+    <script src="https://cdn.datacamp.com/datacamp-light-latest.min.js"></script>
+{% endblock %}

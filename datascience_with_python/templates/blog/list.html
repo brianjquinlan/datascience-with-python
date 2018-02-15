@@ -1,0 +1,61 @@
+{% extends 'sidebar_base.html' %}
+{% load blog_tags %}
+
+{% block page_title %}
+    <h2> {{ view.title }} </h2>
+{% endblock %}
+
+{% block main %}
+    {% for post in posts %}
+
+		<span> 
+			<i class="fa fa-calendar"></i> {{ post.published.date }} 
+            <i class="fa fa-user-o"></i> {{ post.author.username }} 
+        </span>
+
+        <h2> {{ post.title }} </h2>
+        
+        <img src="{{ post.image.url }}" class="img-fluid">
+
+        {{ post.body|truncatewords_html:20|markdown }}
+
+        <a href="{{ post.get_absolute_url }}"> read more </a>
+        <br><br>
+
+    {% empty %}
+        <p> no posts yet. </p>
+    {% endfor %}
+     
+    
+{% endblock %}
+
+{% block sidebar_content %}
+    <div class="sidebar mb-sm-3">
+        <h2> Top Tags </h2>
+        {% for tag in top_tags %}
+        <div class="recent-comments">
+                <h5>
+                    <a href="{% url 'blog:list_by_tag' tag.slug %}">
+                        {{ tag.name }}
+                    </a>
+                </h5>
+        </div>
+        {% endfor %}
+    </div>
+    <div class="sidebar">
+        <h2> Recent Comments </h2> 
+            {% for comment in comments %}
+                <div class="recent-comments">
+                    <h5>
+                        <a href="{{ comment.content_object.get_absolute_url }}">
+                            {{ comment.content_object.title }}
+                        </a>
+                    </h5>
+                    {{ comment.name }}: {{ comment.submit_date }}
+                    <br/ > {{ comment.comment }}
+                    <br/ > <a href="{{ comment.get_absolute_url }}"> go to comment </a>
+                    
+                </div>
+            {% endfor %}
+    </div>
+{% endblock %}

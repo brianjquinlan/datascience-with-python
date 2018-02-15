@@ -1,0 +1,76 @@
+{% extends 'full_page_base.html' %}
+
+{% load comments %}
+{% load comments_xtd %}
+{% load blog_tags %}
+{% load social_share %}
+
+{% block page_title %}
+    <h1> {{ object.title }} </h1>
+{% endblock %}
+
+{% block main %}
+    <div class="container blog-post">
+		<div class="post-info">
+			<span> 
+
+                <i class="fa fa-user-o space"></i>  {{ object.author }}
+                <i class="fa fa-eye space"></i> {{ object.views }} views
+                <i class="fa fa-calendar space"></i> {{ object.published.date }}
+                
+                {% if object.updated != object.published %}
+                    {# <br /> Updated on {{ object.updated }} <br /> #} 
+				{% endif %}
+
+			</span>
+		</div>
+
+        <img src="{{ object.image.url }}" class="img-fluid" >
+
+        <br />
+        <div class="row share-buttons">
+            {% post_to_facebook link_text="<i class='fa fa-facebook fa-fw'></i>" %}
+            {% post_to_gplus link_text="<i class='fa fa-google-plus fa-fw'></i>" %}
+            {% post_to_twitter "New post found" link_text="<i class='fa fa-twitter fa-fw'></i>" %}
+        </div>
+        <br />
+		{{ object.body|markdown }}
+
+		<p> 
+		    {% for tag in object.tags.all %}
+			    <a id="tag" href="{% url 'blog:list_by_tag' tag.slug %}">
+				    {{ tag.name }}
+				</a>
+                
+                {% if not forloop.last %} &nbsp; {% endif %}
+				
+			{% empty %}
+			    no tags yet.
+			{% endfor %}
+		</p>
+
+        {# comments #}
+        {% get_comment_count for object as comment_count %}
+        <div class="text-center" style="padding-top:20px">
+            <a href="{% url 'blog:post_list' %}"> back to post list </a>
+                &nbsp;&sdot;&nbsp;
+                {{ comment_count }} comments have been posted.
+        </div>
+        
+        <div class="comment">
+            <h4 class="text-center"> Your comment </h4>
+            <div class="well">
+                {% render_comment_form for object %}
+            </div>
+        </div>
+
+        {% if comment_count %}
+            <hr/>
+            <ul class="list-unstyled">
+                {% render_xtdcomment_tree for object %}
+            </ul>
+        {% endif %}
+    </div>
+{% endblock %}
+
+

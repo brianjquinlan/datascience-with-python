@@ -14,7 +14,7 @@ from django.core.wsgi import get_wsgi_application
 if os.environ.get('DJANGO_SETTINGS_MODULE') == 'config.settings.production':
     from whitenoise.django import DjangoWhiteNoise
 
-os.environ.setdefault("DJANGO_SETTINGS_MODULE", "datascience-with-python.settings")
+os.environ.setdefault("DJANGO_SETTINGS_MODULE", "datascience_with_python.settings")
 
 application = get_wsgi_application()
 if os.environ.get('DJANGO_SETTINGS_MODULE') == 'config.setings.production':
