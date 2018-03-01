@@ -5,11 +5,26 @@
 {% endblock %}
 
 {% block main %}
-    {% for lib in libraries %}
-        <div class="">
-            <a href="{% url 'machine_learning:interactive' lib %}"> 
-                {{ lib }} </a>
-        </div>
 
+    <p> 
+        Here using a simple dataset you can explore how to explore and visualize        data using different python libraries.
+    </p> 
+    
+    <div class="row">
+
+    {% for lib in libraries %}
+        <div class="col-md-5 mx-lg-3 card white-space">
+            <div class="card-block">
+                <h4 class="card-title">
+                    <a href="{% url 'machine_learning:interactive' lib %}"> 
+                        {{ lib }} 
+                    </a>
+                </h4>
+ 
+                {{ lib.description }}
+            </div>
+        </div>
     {% endfor %}
+
+    </div>
 {% endblock %}

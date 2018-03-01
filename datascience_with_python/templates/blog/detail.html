@@ -10,7 +10,7 @@
 {% endblock %}
 
 {% block main %}
-    <div class="container blog-post">
+    <div class="container blog-post px-2">
 		<div class="post-info">
 			<span> 
 
@@ -33,6 +33,7 @@
             {% post_to_gplus link_text="<i class='fa fa-google-plus fa-fw'></i>" %}
             {% post_to_twitter "New post found" link_text="<i class='fa fa-twitter fa-fw'></i>" %}
         </div>
+        
         <br />
 		{{ object.body|markdown }}
 

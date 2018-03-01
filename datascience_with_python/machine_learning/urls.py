@@ -16,4 +16,16 @@ urlpatterns = [
         view = views.interactive,
         name = 'interactive'
     ),
+
+    url(
+        regex = r'^algorithms/$',
+        view = views.algorithms,
+        name = 'algorithms'
+    ),
+
+    url(
+        regex = r'^libraries/$',
+        view = views.libraries,
+        name = 'libraries'
+    ),
 ]

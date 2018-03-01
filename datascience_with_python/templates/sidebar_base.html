@@ -2,8 +2,9 @@
 {% load staticfiles %}
 
 {% block content %}
-    <div class="col-sm-12 mb-sm-3 col-md-7 mx-md-3 page">
-            <div class="title">
+    <div class="col-sm-12 col-md-12 col-lg-7 no-padding">
+        <div class="mx-md-3 mb-sm-3 p-md-3 page">
+            <div class="title px-0">
                 {% block page_title %}
                 {% endblock %}
             </div>
@@ -13,22 +14,21 @@
 			        <p> content </p>
 		        {% endblock %}
             </div>
+        </div>
 	</div>
-    <div class="col-sm-12 col-md-4 no-padding">
+    <div class="col-sm-12 col-md-12 col-lg-4 no-padding">
 		{% block sidebar %}
-			<div class="sidebar mb-sm-3">
+			<div class="sidebar mb-sm-3 mx-md-3 mx-lg-0">
 		        <div class="border">
-					<h2> Data Science with Python </h3>
+					<h2> Blog Posts </h2>
 						<span> Posts about small machine learning projects </span>
 				</div>
-
+                <div class="border">
 					<h4> Blog Archives </h4>
 						<a href={% url 'blog:archive_list' %}> Archived Posts </a>
 								
-					<br />
-					<br />
-		            
-					<div class="subscribe-form">
+				</div>
+					<div class="subscribe-form white-space">
 		                <h4> Subscribe by email </h4>
 		                <span> Enter your email to subscribe to machine learning blog posts </span>
 							<form id="subscribe" method="POST">

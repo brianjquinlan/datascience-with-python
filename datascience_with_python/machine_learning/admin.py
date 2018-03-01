@@ -1,5 +1,5 @@
 from django.contrib import admin
-from .models import Command, DataFrames
+from .models import Command, Library, DataFrames
 
 
 class CommandAdmin(admin.ModelAdmin):
@@ -8,7 +8,7 @@ class CommandAdmin(admin.ModelAdmin):
 
     order_by = 'library'
 
-
 admin.site.register(Command, CommandAdmin)
+admin.site.register(Library)
 admin.site.register(DataFrames)
 
