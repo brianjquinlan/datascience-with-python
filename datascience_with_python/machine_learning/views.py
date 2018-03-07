@@ -17,6 +17,8 @@ def interactive(request, library):
 
     context_dict['title'] = library
 
+    context_dict['data'] = DataFrames.objects.get(name='Test')
+
     library = Library.objects.get(library=library)
     command_list = Command.objects.filter(library=library).order_by('section')
         

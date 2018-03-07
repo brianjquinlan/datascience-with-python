@@ -6,38 +6,54 @@
 
 {% block main %} 
     {% regroup command_list by section as section_list %}
+		
+	<div class="row">
+		<div class="col-lg-6">
+			{% for commands in section_list %}
+				<h2> {{ commands.grouper }} </h2> <br />
 
-    {% for commands in section_list %}
-        <h2> {{ commands.grouper }} </h2> <br />
+				{% for command in commands.list %}
+					<h4> {{ command.title }} </h4> <br />
 
-        {% for command in commands.list %}
-            <p> {{ command.title }} </p> <br />
+					<p>	{{ command.description }} </p>
+		
+				{% endfor %}
+			{% endfor %}
+		</div>
 
-            {# datacamp javascript #}
-   			<div class="col-md-6">
-    			<div data-datacamp-exercise data-lang="python">
-        			<code data-type="pre-exercise-code">
-            			# this gets executed each time the exercise is initialized
-            			import pandas as pd
-        			</code>
-        			<code data-type="sample-code">
-            			{{ command.method }}
-        			</code>
-        			<code data-type="solution">
-            			# not needed right now
-        			</code>
-       				 <code data-type="sct">
-						{# this is to test the answer for the solution #}
-        			</code>
-					<br />
-					<br />
-    			</div>
-  		 	</div>
+		{# datacamp javascript #}
+		<div class="col-lg-6">
+			
+			<h4> Interactive Shell </h4>
 
-        {% endfor %}
-    {% endfor %}
+			<p> 
+				Here is an interactive shell to try out the methods discussed
+				on a dataframe 
+			</p>
 
-    
+			<div data-datacamp-exercise data-lang="python">
+				<code data-type="pre-exercise-code">
+					# this gets executed each time the exercise is initialized
+					import pandas as pd
+					dataframe = pd.DataFrame({{ data.data }})
+
+				</code>
+				<code data-type="sample-code">
+					# some examples of code to run in the shell
+
+				</code>
+				<code data-type="solution">
+					# not needed right now
+				</code>
+				 <code data-type="sct">
+					{# this is to test the answer for the solution #}
+				</code>
+				<br />
+				<br />
+			</div>
+	 	</div>
+	</div>
+	
 
 {% endblock %}
 
