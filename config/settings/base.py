@@ -20,7 +20,7 @@ APPS_DIR = ROOT_DIR.path('datascience_with_python')
 # Debug
 DEBUG = env.bool('DJANGO_DEBUG', False)
 
-#ALLOWED_HOSTS = []
+# ALLOWED_HOSTS = []
 
 # SITEID 
 SITE_ID = 1
