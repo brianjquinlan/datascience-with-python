@@ -1,6 +1,6 @@
 from django.test import TestCase
 
-from ..models import Library, Command, DataFrames
+from ..models import Library, Command, DataFrame
 
 class TestLibrary(TestCase):
     def setUp(self):

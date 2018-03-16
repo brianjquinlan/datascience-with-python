@@ -235,8 +235,10 @@ div.output_subarea {
     -moz-box-flex: 1;
     box-flex: 1;
     flex: 1;
-    max-width: calc(100% - 14ex);
+    /*max-width: calc(100% - 14ex);*/
 }
+
+
 
 div.output_area {
 	padding: 0;
@@ -257,3 +259,16 @@ div.output_prompt {
     color: #8b0000;
 }
 
+@media only screen and (max-width: 560px) {
+    .prompt {
+        text-align: left;
+    }
+
+    div.input {
+        flex-direction: column;
+    }
+
+    div.output_area {
+        flex-direction: column;
+    }
+}

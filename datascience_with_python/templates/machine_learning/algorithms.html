@@ -1,1 +1,11 @@
-{% extends 'base.html' %}
+{% extends 'full_page_base.html' %}
+
+{% block page_title %}
+    {{ alg.name }}
+{% endblock %}
+
+{% block main %}
+    
+    {{ alg.description }}
+
+{% endblock %}

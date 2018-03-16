@@ -1,5 +1,5 @@
 from django.contrib import admin
-from .models import Command, Library, DataFrames
+from .models import Command, Library, DataFrame, PythonLibrary, Algorithm
 
 
 class CommandAdmin(admin.ModelAdmin):
@@ -10,5 +10,6 @@ class CommandAdmin(admin.ModelAdmin):
 
 admin.site.register(Command, CommandAdmin)
 admin.site.register(Library)
-admin.site.register(DataFrames)
-
+admin.site.register(DataFrame)
+admin.site.register(PythonLibrary)
+admin.site.register(Algorithm)

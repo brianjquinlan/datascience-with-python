@@ -5,23 +5,69 @@
 {% endblock %}
 
 {% block main %}
+    <div class="row mx-md-3"> 
+    <div class="col-md-12 section-description">
+        <p> 
+            Here using a simple dataset you can learn how to explore and 
+            visualize data using different python libraries.
+        </p> 
 
-    <p> 
-        Here using a simple dataset you can explore how to explore and visualize        data using different python libraries.
-    </p> 
-    
-    <div class="row mx-md-3">
+        <p> 
+            The topics discussed for these libraries are merely an introduction
+            into using them.  I highly recommend checking out their respective 
+            documentation pages to further utilize them.  I would also recommend
+            using sites such as Udemy or Coursera as well.  These sites have helped me 
+            tremendously in topics related to these libraries and machine learning in general.
+        </p>
+    </div>
 
+    <div class="col-md-12 white-space">
+        <h3> Interactive Section </h3>
+    </div>
     {% for lib in libraries %}
         <div class="col-lg-5 col-md-6 mx-lg-3 card white-space">
             <div class="card-block">
                 <h4 class="card-title">
-                    <a href="{% url 'machine_learning:interactive' lib %}"> 
+                    <a href="{% url 'machine_learning:interactive' lib.slug %}"> 
                         {{ lib }} 
                     </a>
                 </h4>
  
                 {{ lib.description }}
+            </div>
+        </div>
+    {% endfor %}
+    
+    <div class="col-md-12 white-space">
+        <h3> Algorithms </h3>
+    </div>
+    {% for alg in algorithms %}
+	    <div class="col-lg-5 col-md-6 mx-lg-3 card white-space">
+            <div class="card-block">
+                <h4 class="card-title">
+                    <a href="{% url 'machine_learning:algorithms' alg.slug %}"> 
+                        {{ alg }} 
+                    </a>
+                </h4>
+ 
+                {{ alg.description|truncatewords:15 }}
+            </div>
+        </div>	
+    {% endfor %}
+    
+    <div class="col-md-12 white-space">
+        <h3> Python Libraries </h3>
+    </div>
+    {% for pylib in python_libs %}
+	    <div class="col-lg-5 col-md-6 mx-lg-3 card white-space">
+            <div class="card-block">
+                <h4 class="card-title">
+                    <a href="{% url 'machine_learning:libraries' pylib.slug %}"> 
+                        {{ pylib }}
+                    </a>
+                </h4>
+ 
+                {{ pylib.description|truncatewords:15 }}
             </div>
         </div>
     {% endfor %}

@@ -7,7 +7,7 @@
 
 {% block main %}
 <div class="col-md-12">    
-    <ul>
+    {#<ul>#}
         {% for post in object_list %}
 			<span>
                 <i class="fa fa-calendar"></i> {{ post.published.date }}
@@ -22,7 +22,7 @@
            	<br><br>
 
         {% endfor %}
-    </ul>
+    {#</ul>#}
 
     <p>
         {% if previous_month %}

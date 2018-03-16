@@ -7,7 +7,8 @@
 {% endblock %}
 
 {% block main %}
-    <ul>
+    {#<ul>#}
+    <div class="col-md-12 zero-padding">
         {% for post in post_list %}
 			<span> 
                 <i class="fa fa-calendar"></i> {{ post.published.date }}
@@ -21,7 +22,8 @@
             <a href="{{ post.get_absolute_url }}"> read more </a>
            	<br><br>
         {% endfor %}
-    </ul>
+    </div>
+    {#</ul>#}
 
     <h3> By month </h3>
         <a href="{% url 'blog:archive_month' post_list.first.published|date:"Y" post_list.first.published|date:"b" %}">

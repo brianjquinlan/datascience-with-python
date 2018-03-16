@@ -5,7 +5,7 @@
 {% endblock %}
 
 {% block main %}
-    <div class="container-fluid px-1">
+    <div class="container-fluid px-0">
         <div class="row">
             <div class="col-md-6">
                 <div class="card white-space">
@@ -13,7 +13,7 @@
                     <div class="card-block">
                         <h4 class="card-title"> Algorithms </h4>
                         <p> Read about the different types of machine learning algorithms. </p>
-                        <a href="{% url 'machine_learning:algorithms' %}"> ML algorithms </a>
+                        <a href="{% url 'machine_learning:main_page' %}"> ML algorithms </a>
                     </div>
                 </div>
             </div>
@@ -23,7 +23,7 @@
                     <div class="card-block">
                         <h4 class="card-title"> Libraries </h4>
                         <p> Read about python libraries for machine learning. </p>
-                        <a href="{% url 'machine_learning:libraries' %}"> python libraries </a>
+                        <a href="{% url 'machine_learning:main_page' %}"> python libraries </a>
                     </div>
                 </div>
             </div>

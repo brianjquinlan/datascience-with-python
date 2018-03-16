@@ -6,6 +6,7 @@
 {% endblock %}
 
 {% block main %}
+    <div class="mobile-padding">
     {% for post in posts %}
 
 		<span> 
@@ -25,7 +26,7 @@
     {% empty %}
         <p> no posts yet. </p>
     {% endfor %}
-     
+    </div>
     
 {% endblock %}
 

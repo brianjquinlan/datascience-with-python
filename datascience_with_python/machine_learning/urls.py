@@ -18,13 +18,13 @@ urlpatterns = [
     ),
 
     url(
-        regex = r'^algorithms/$',
+        regex = r'^algorithms/(?P<algorithm>[-\w]+)/$',
         view = views.algorithms,
         name = 'algorithms'
     ),
 
     url(
-        regex = r'^libraries/$',
+        regex = r'^libraries/(?P<pylibrary>[-\w]+)/$',
         view = views.libraries,
         name = 'libraries'
     ),

@@ -2,7 +2,7 @@ from django.test import TestCase, RequestFactory
 from django.core.urlresolvers import reverse
 
 from ..views import *
-from ..models import Library, Command, DataFrames
+from ..models import Library, Command, DataFrame
 
 class TestSetUp(TestCase):
     def setUp(self):
