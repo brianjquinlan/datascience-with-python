@@ -1,7 +1,13 @@
 -r base.txt
 
+gunicorn
+
 # Email setup
 django-anymail==0.9
 
 # static files
 whitenoise==3.3.0
+
+# media
+django-storages
+boto3
