@@ -1,1 +1,1 @@
-web: gunicorn datascience_with_python.wsgi --log-file -
+web: gunicorn config.wsgi:application --log-file -
