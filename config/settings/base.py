@@ -56,6 +56,7 @@ INSTALLED_APPS = DJANGO_APPS + THIRD_PARTY_APPS + LOCAL_APPS
 # middleware config
 MIDDLEWARE_CLASSES = [
     'django.middleware.security.SecurityMiddleware',
+    'whitenoise.middleware.WhiteNoiseMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
     'django.middleware.common.CommonMiddleware',
     'django.middleware.csrf.CsrfViewMiddleware',
@@ -171,7 +172,7 @@ COMMENTS_XTD_CONFIRM_EMAIL = False
 # COMMENTS_XTD_SALT(b"will change this"
 #                   b"will forsure change this")
 
-# COMMENTS_XTD_FROM_EMAIL = 'noreplay@datascience-with-python.com'
+# COMMENTS_XTD_FROM_EMAIL = 'noreply@datascience-with-python.com'
 # COMMENTS_XTD_CONTACT_EMAIL = 'help@datascience-with-python.com'
 
 # user agent

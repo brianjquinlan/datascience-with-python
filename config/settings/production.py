@@ -59,6 +59,14 @@ CSRF_COOKIE_SECURE = True
 STATIC_ROOT = str(APPS_DIRS.path('staticfiles')
 STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'
 
+
 # media settings
+INSTALLED_APPS += ['storages']
+
+DEFAULT_FILE_STORAGE = 'storages.backends.s3boto3.S3Boto3Storage'
+AWS_ACCESS_KEY_ID = ""
+AWS_SECRET_ACCESS_KEY = ""
+AWS_STORAGE_BUCKET_NAME = ""
+AWS_S3_FILE_OVERWRITE = False
 
 # logging 
