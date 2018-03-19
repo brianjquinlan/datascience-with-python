@@ -1,4 +1,4 @@
-from .common import *
+from .base import *
 # obviously not done
 
 # Secret key
