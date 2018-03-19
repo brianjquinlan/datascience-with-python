@@ -4,6 +4,9 @@ from .common import *
 # Secret key
 SECRET_KEY = env('DJANGO_SECRET_KEY')
 
+# admin url
+ADMIN_URL = env('DJANGO_ADMIN_URL')
+
 # domain names valid for site
 ALLOWED_HOSTS = env.list('DJANGO_ALLOWED_HOSTS')
 
@@ -11,7 +14,7 @@ ALLOWED_HOSTS = env.list('DJANGO_ALLOWED_HOSTS')
 INSTALLED_APPS += ['anymail']
 
 ANYMAIL = {
-        'MAILGUN_API_KEY' : env('DJANGO_MAILGUN_KEY')
+        'MAILGUN_API_KEY' : env('DJANGO_MAILGUN_KEY'),
         'MAILGUN_SENDER_DOMAIN' : env('DJANGO_DOMAIN')
 
 }
