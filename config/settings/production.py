@@ -59,7 +59,7 @@ SESSION_COOKIE_SECURE = True
 CSRF_COOKIE_SECURE = True
 
 # static settings using whitenoise
-STATIC_ROOT = str(APPS_DIRS.path('staticfiles')
+STATIC_ROOT = str(APPS_DIRS.path('staticfiles'))
 STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'
 
 
