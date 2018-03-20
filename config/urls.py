@@ -24,8 +24,8 @@ from django.views.generic import TemplateView
 
 urlpatterns = [
     url(r'^$', TemplateView.as_view(template_name='site/homepage.html'), name='home'),
-    url(r'^about$', TemplateView.as_view(template_name='site/about.html'), name='about'),
-    url(r'^admin/', admin.site.urls),
+    url(r'^about/$', TemplateView.as_view(template_name='site/about.html'), name='about'),
+    url(settings.ADMIN_URL, admin.site.urls),
     url(r'^blog/', include('datascience_with_python.blog.urls', namespace='blog')),
     url(r'^machine-learning/', include('datascience_with_python.machine_learning.urls', namespace='machine_learning')),
     url(r'^comments/', include('django_comments_xtd.urls')),
