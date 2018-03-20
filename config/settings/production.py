@@ -53,11 +53,6 @@ TEMPLATES[0]['OPTIONS']['loaders'] = [('django.template.loaders.cached.Loader', 
     ]),
 ]
 
-# security settings
-SECURE_SSL_REDIRECT = True
-SESSION_COOKIE_SECURE = True
-CSRF_COOKIE_SECURE = True
-
 # static settings using whitenoise
 STATIC_ROOT = str(APPS_DIR.path('staticfiles'))
 STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'
