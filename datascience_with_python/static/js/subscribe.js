@@ -35,7 +35,7 @@ $(document).ready(function(){
 		                }
 		            },
 		            error: function(response) {
-		                swal("Something went wrong. Please Try again.");
+		                swal("Something went wrong. Please Try again." + response.status_code);
 		                $('#email_id').val('');
 		            }
 		        });

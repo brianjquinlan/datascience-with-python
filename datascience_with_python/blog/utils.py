@@ -20,6 +20,8 @@ def subscribe_email(email):
         code = e.response.status_code
         if code == 400:
             return code
+        
+        return e
 
 def unsubscribe_email(email):
 	pass
