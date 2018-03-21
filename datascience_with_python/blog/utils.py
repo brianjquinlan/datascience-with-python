@@ -21,7 +21,5 @@ def subscribe_email(email):
         if code == 400:
             return code
         
-        return e
-
 def unsubscribe_email(email):
 	pass
