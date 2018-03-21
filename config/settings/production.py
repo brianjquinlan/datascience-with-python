@@ -93,6 +93,8 @@ RAVEN_CONFIG = {
     'dsn' : env('SENTRY_DSN')
 }
 
+SENTRY_CLIENT = 'raven.contrib.django.raven_compat.DjangoClient'
+
 LOGGING = {
     'version': 1,
     'disable_existing_loggers': True,
