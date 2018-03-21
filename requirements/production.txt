@@ -1,6 +1,6 @@
 -r base.txt
 
-gunicorn
+gunicorn==19.7.1
 
 # Email setup
 django-anymail==0.9
@@ -9,5 +9,8 @@ django-anymail==0.9
 whitenoise==3.3.0
 
 # media
-django-storages
-boto3
+django-storages==1.6.5
+boto3==1.6.11
+
+# logging
+raven==6.6.0

@@ -156,8 +156,8 @@ ROOT_URLCONF = 'config.urls'
 
 WSGI_APPLICATION = 'config.wsgi.application'
 
-
 ADMIN_URL = r'^admin/'
+
 
 # third party
 

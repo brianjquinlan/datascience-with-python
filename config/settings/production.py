@@ -1,5 +1,5 @@
 from .base import *
-# obviously not done
+import logging
 
 # Secret key
 SECRET_KEY = env('DJANGO_SECRET_KEY')
@@ -21,6 +21,8 @@ ANYMAIL = {
 
 EMAIL_BACKEND = 'anymail.backends.mailgun.EmailBackend'
 DEFAULT_FROM_EMAIL = env('DJANGO_DEFAULT_FROM_EMAIL')
+SERVER_EMAIL = env('DJANGO_SERVER_EMAIL')
+EMAIL_SUBJECT_PREFIX = env('DJANGO_EMAIL_SUBJECT_PREFIX')
 
 # sessions in cache
 SESSION_ENGINE = 'django.contrib.sessions.backends.cache'
@@ -81,6 +83,59 @@ CSRF_COOKIE_SECURE = True
 CSRF_COOKIE_HTTPONLY = True
 X_FRAME_OPTIONS = 'DENY'
 
-INSTALLED_APPS += ['gunicorn', ]
+INSTALLED_APPS += ['gunicorn']
 
-# logging 
+# logging
+INSTALLED_APPS += ['raven.contrib.django.raven_compat']
+MIDDLEWARE_CLASSES = ['raven.contrib.django.raven_compat.middleware.SentryReponseErrorIdMiddleware'] + MIDDLEWARE_CLASSES
+
+RAVEN_CONFIG = {
+    'dsn' : env('SENTRY_DSN')
+}
+
+LOGGING = {
+    'version': 1,
+    'disable_existing_loggers': True,
+    'root': {
+        'level': 'WARNING',
+        'handlers': ['sentry'],
+    },
+    'formatters': {
+        'verbose': {
+            'format': '%(levelname)s %(asctime)s %(module)s '
+                      '%(process)d %(thread)d %(message)s'
+        },
+    },
+    'handlers': {
+        'sentry': {
+            'level': 'ERROR', # To capture more than ERROR, change to WARNING, INFO, etc.
+            'class': 'raven.contrib.django.raven_compat.handlers.SentryHandler',
+            'tags': {'custom-tag': 'x'},
+        },
+        'console': {
+            'level': 'DEBUG',
+            'class': 'logging.StreamHandler',
+            'formatter': 'verbose'
+        }
+    },
+    'loggers': {
+        'django.db.backends': {
+            'level': 'ERROR',
+            'handlers': ['console'],
+            'propagate': False,
+        },
+        'raven': {
+            'level': 'DEBUG',
+            'handlers': ['console'],
+            'propagate': False,
+        },
+        'sentry.errors': {
+            'level': 'DEBUG',
+            'handlers': ['console'],
+            'propagate': False,
+        },
+    },
+}
+
+
+
