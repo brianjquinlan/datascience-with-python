@@ -85,6 +85,7 @@ X_FRAME_OPTIONS = 'DENY'
 
 INSTALLED_APPS += ['gunicorn']
 
+"""
 # logging
 INSTALLED_APPS += ['raven.contrib.django.raven_compat']
 MIDDLEWARE_CLASSES = ['raven.contrib.django.raven_compat.middleware.SentryReponseErrorIdMiddleware'] + MIDDLEWARE_CLASSES
@@ -139,5 +140,5 @@ LOGGING = {
     },
 }
 
-
+"""
 
