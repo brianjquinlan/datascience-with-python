@@ -20,7 +20,7 @@ def main_page(request):
 def interactive(request, library):
     context_dict = {}
 
-    data = DataFrame.objects.get(name='cereal')
+    data = DataFrame.objects.get(name='boston_airbnb')
     context_dict['data'] = data
     
     # frame = "```python\n%s```"
