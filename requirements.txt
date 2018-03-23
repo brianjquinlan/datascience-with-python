@@ -36,7 +36,8 @@ django-contrib-comments==1.8.0
 pytz==2018.3
 docutils==0.14
 djangorestframework==3.7.7
-django-comments-xtd==3.1.0
+django-comments-xtd==2.0.5
+
 
 # sharing posts
 django-social-share==1.1.2
