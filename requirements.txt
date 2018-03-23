@@ -1,4 +1,6 @@
-wheel
+wheel==0.30.0
+six==1.11.0
+
 Django==1.11
 psycopg2==2.7.1
 
@@ -30,6 +32,10 @@ django-user-agents==0.3.0
 
 # comments
 django-contrib-comments==1.8.0
+
+pytz==2018.3
+docutils==0.14
+djangorestframework==3.7.7
 django-comments-xtd==2.1.0
 
 # sharing posts
