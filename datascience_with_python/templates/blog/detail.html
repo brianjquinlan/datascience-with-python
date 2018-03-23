@@ -10,11 +10,11 @@
 {% endblock %}
 
 {% block main %}
-    <div class="col-md-12 blog-post zero-padding">
+    <div class="col-md-12 blog-post zero-padding ">
 		<div class="post-info">
 			<span> 
 
-                <i class="fa fa-user-o space"></i>  {{ object.author }}
+                <i class="fa fa-user-o space"></i>  {{ object.author.first_name }}
                 <i class="fa fa-eye space"></i> {{ object.views }} views
                 <i class="fa fa-calendar space"></i> {{ object.published.date }}
                 
