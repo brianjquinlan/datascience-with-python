@@ -26,7 +26,7 @@ def interactive(request, library):
     # frame = "```python\n%s```"
 
     library = Library.objects.get(slug=library)
-    command_list = Command.objects.filter(library=library).order_by('section')
+    command_list = Command.objects.filter(library=library).order_by('section').order_by('id')
        
     context_dict['title'] = library.library
 
