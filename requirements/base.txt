@@ -29,7 +29,7 @@ user-agents==1.1.0
 django-user-agents==0.3.0
 
 # comments
-django-comments.xtd==2.0.10
+django-comments-xtd==2.0.10
 django-contrib-comments==1.8.0
 
 # sharing posts
