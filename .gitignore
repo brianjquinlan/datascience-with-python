@@ -1,0 +1,24 @@
+# basics
+*.py[cod]
+__pycache__
+
+# logs
+*.log
+pip-log.txt
+
+# testing
+.coverage
+htmlcov
+
+# vim
+*~
+*.swp
+*.swo
+
+# virual environments
+.env
+
+# media
+datascience-with-python/media/
+
+

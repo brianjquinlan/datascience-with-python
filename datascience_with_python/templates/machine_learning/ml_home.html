@@ -1,4 +1,5 @@
 {% extends 'full_page_base.html' %}
+{% load blog_tags %} 
 
 {% block page_title %}
     {{ title }}
@@ -50,7 +51,7 @@
                     </a>
                 </h4>
  
-                {{ alg.description|truncatewords:15 }}
+                {{ alg.description|truncatewords_html:15|markdown }}
             </div>
         </div>	
     {% endfor %}
