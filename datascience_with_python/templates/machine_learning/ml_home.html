@@ -51,7 +51,7 @@
                     </a>
                 </h4>
  
-                {{ alg.description|truncatewords_html:15|markdown }}
+                {{ alg.description|truncatewords_html:15|markdown|striptags }}
             </div>
         </div>	
     {% endfor %}
