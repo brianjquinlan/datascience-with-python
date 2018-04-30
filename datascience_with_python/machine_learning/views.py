@@ -20,14 +20,15 @@ def main_page(request):
 def interactive(request, library):
     context_dict = {}
 
-    data = DataFrame.objects.get(name='boston_airbnb')
-    context_dict['data'] = data
+    # data = DataFrame.objects.get(name='boston_airbnb')
+    # context_dict['data'] = data
     
-    # frame = "```python\n%s```"
-
     library = Library.objects.get(slug=library)
     command_list = Command.objects.filter(library=library).order_by('section').order_by('id')
        
+    data = library.dataframe_set.all()
+    context_dict['data'] = data
+
     context_dict['title'] = library.library
 
     if command_list.exists():

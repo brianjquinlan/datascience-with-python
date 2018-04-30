@@ -12,27 +12,39 @@
 	<div class="row">
 		<div class="col-lg-6">
             <div class="paragraph-padding">
+
+			 <div class="">
+                    {% if data %}
+                        The examples below are using the dataset(s) described by the snippit below.
+                    {% endif %}
+
+                    {% for df in data %} 
+                        {{ df.preview|markdown }}
+                        <br /><br />
+                    {% endfor %}
+            </div>
                         
 			{% for commands in section_list %}
 				<h2> {{ commands.grouper }} </h2> <br />
                 
-                <div class=""> 
-                    The examples below are using the dataset described by the snippit below. 
-                    {{ data.preview|markdown }} 
-                </div>
-
+               
 				{% for command in commands.list %}
-					<h4> {{ command.title }} </h4> <br />
+				<div class="pb-5">
+                    <h4> {{ command.title }} </h4>
 
 					<p>	
-                        {{ command.description }} <br /><br />
+                        {{ command.description }} <br />
                         
-
-                        Here are some examples of this in practice: <br/ >
                         <div class="col-md-10">
                             {{ command.method|markdown }}
+
+                            {% if command.image %}
+                                <img src="{{ command.image.url }}" class="img-fluid">
+                            {% endif %}
+
                         </div>
                     </p>
+                </div>
 				{% endfor %}
 			{% endfor %}
             </div>
@@ -76,4 +88,4 @@
 
 {% block javascript %}
     <script src="https://cdn.datacamp.com/datacamp-light-latest.min.js"></script>
-{% endblock %}
+{% endblock %}http://127.0.0.1:8000/static/images/convexgradient.png
