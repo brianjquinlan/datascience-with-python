@@ -64,12 +64,11 @@
 				<code data-type="pre-exercise-code">
 					# this gets executed each time the exercise is initialized
 					import pandas as pd
-					dataframe = pd.DataFrame({{ data.data }})
+    data = pd.DataFrame({{ data.first.data }})
 
 				</code>
 				<code data-type="sample-code">
-					# some examples of code to run in the shell
-
+					# dataframe name is data and only the first dataframe is available
 				</code>
 				<code data-type="solution">
 					# not needed right now
@@ -82,10 +81,8 @@
 			</div>
 	 	</div>
     </div>	
-	
-
 {% endblock %}
 
 {% block javascript %}
     <script src="https://cdn.datacamp.com/datacamp-light-latest.min.js"></script>
-{% endblock %}http://127.0.0.1:8000/static/images/convexgradient.png
+{% endblock %}
