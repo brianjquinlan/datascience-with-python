@@ -28,7 +28,7 @@ class TestInteractive(TestSetUp):
     def setUp(self):
         super().setUp()
 
-        self.dataframe = DataFrames.objects.create(name='Test', data={'test':3})
+        self.dataframe = DataFrame.objects.create(name='Test', data={'test':3})
         self.command = Command.objects.create(library=self.library, section='df', title='test',
             description='description', method='method')
 
@@ -43,22 +43,56 @@ class TestInteractive(TestSetUp):
         # self.assertQuerysetEqual(response.context_data['command_list'], map(repr, commands))
         # self.assertQuerysetEqual(response.context_data['data'], self.dataframe)
 
+    def test_404(self):
+        request = self.factory.get(reverse('machine_learning:interactive',
+            kwargs={'library':'test'}))
+        
+        with self.assertRaises(Http404):
+            interactive(request, library='test')
+
 class TestAlgorithms(TestCase):
     def setUp(self):
         self.factory = RequestFactory()
-
+    
+        self.algorithm = Algorithm.objects.create(name='Gradient Descent', description='Test example',
+                slug='gradient-descent')
+        
     def test_get(self):
-        request = self.factory.get(reverse('machine_learning:algorithms'))
-        response = algorithms(request)
+        request = self.factory.get(reverse('machine_learning:algorithms',
+            kwargs={'algorithm':'gradient-descent'}))
+        response = algorithms(request, algorithm='gradient-descent')
 
         self.assertEqual(response.status_code, 200)
+
+    def test_404(self):
+        request = self.factory.get(reverse('machine_learning:algorithms',
+            kwargs={'algorithm':'not-existing'}))
+
+        with self.assertRaises(Http404):
+            algorithms(request, algorithm='not-existing')
+
+        # response = self.client.get(reverse('machine_learning:algorithms',
+        #     kwargs={'algorithm':'not-existing'}))
+
+        # self.assertEqual(response.status_code, 404)
 
 class TestLibraries(TestCase):
     def setUp(self):
         self.factory = RequestFactory()
 
+        self.pylibrary = PythonLibrary.objects.create(name='Numpy', description='Test example',
+                slug='numpy')
+
     def test_get(self):
-        request = self.factory.get(reverse('machine_learning:libraries'))
-        response = libraries(request)
+        request = self.factory.get(reverse('machine_learning:libraries',
+            kwargs={'pylibrary':'numpy'}))
+        response = libraries(request, pylibrary='numpy')
 
         self.assertEqual(response.status_code, 200)
+
+    def test_404(self):
+        request = self.factory.get(reverse('machine_learning:libraries',
+            kwargs={'pylibrary':'test'}))
+        
+        with self.assertRaises(Http404):
+            libraries(request, pylibrary='test')

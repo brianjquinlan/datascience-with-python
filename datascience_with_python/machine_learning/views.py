@@ -23,7 +23,7 @@ def interactive(request, library):
     # data = DataFrame.objects.get(name='boston_airbnb')
     # context_dict['data'] = data
     
-    library = Library.objects.get(slug=library)
+    library = get_object_or_404(Library, slug=library)
     command_list = Command.objects.filter(library=library).order_by('section').order_by('id')
        
     data = library.dataframe_set.all()

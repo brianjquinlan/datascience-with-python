@@ -23,9 +23,9 @@ class TestCommand(TestCase):
 
 class TestLibrary(TestCase):
     def setUp(self):
-        self.dataframe = DataFrames.objects.create(name='test', data={'data':3})
+        self.dataframe = DataFrame.objects.create(name='test', data={'data':3})
 
     def test_str(self):
-        dataframe = DataFrames.objects.get(name='test')
+        dataframe = DataFrame.objects.get(name='test')
         self.assertEqual(str(dataframe), self.dataframe.name)
 
