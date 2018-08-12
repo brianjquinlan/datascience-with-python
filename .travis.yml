@@ -4,9 +4,10 @@ python:
     - "3.4"
 
 env:
-    - DJANGO=1.11
-    - DATABSE_URL=postgres:///datascience_test
-    - DJANGO_EMAIL_BACKEND=django.core.mail.backens.console.EmailBackend
+    global:
+        - DJANGO=1.11
+        - DATABASE_URL=postgres:///datascience_test
+        - DJANGO_EMAIL_BACKEND=django.core.mail.backens.console.EmailBackend
 install:
     - pip install -r requirements.txt
 
