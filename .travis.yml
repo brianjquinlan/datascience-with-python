@@ -3,14 +3,22 @@ language: python
 python:
     - "3.4"
 
+services:
+    - postgresql
+
 env:
     global:
         - DJANGO=1.11
         - DATABASE_URL=postgres:///datascience_test
         - DJANGO_EMAIL_BACKEND=django.core.mail.backens.console.EmailBackend
+
 install:
     - pip install -r requirements/local.txt
     - pip install -r requirements/base.txt
+
+before_script:
+    - psql template1 -c 'create extension hstore;'
+    - createdb datascience_test
 
 script:
     - python manage.py test
