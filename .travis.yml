@@ -5,7 +5,8 @@ python:
 
 env:
     - DJANGO=1.11
-
+    - DATABSE_URL=postgres:///datascience_test
+    - DJANGO_EMAIL_BACKEND=django.core.mail.backens.console.EmailBackend
 install:
     - pip install -r requirements.txt
 
