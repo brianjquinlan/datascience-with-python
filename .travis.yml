@@ -4,7 +4,7 @@ python:
     - "3.4"
 
 services:
-    - postgresql: "9.5.12"
+    - postgresql: "9.6.6"
 
 env:
     global:
